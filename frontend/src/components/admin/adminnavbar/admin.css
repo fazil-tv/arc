@@ -1,0 +1,13 @@
+.sec-sidenavbar {
+    /* height: 99vh; */
+}
+.logo{
+    padding: 45px;
+}
+
+li:last-child {
+    margin-top: auto; 
+}
+.sidenavbar{
+    background-color: #15182D;
+}
