@@ -1,14 +1,17 @@
 import { Request, Response } from 'express';
 import { AdminLoginUseCase } from '../../usecases';
 import { AdminRepository } from '../../repositories/implementation/adminRepository';
+import UserService from '../../usecases/admin/getuserUsecase';
 
 export class AdminController {
     private adminLoginUseCase: AdminLoginUseCase;
+    private userService: UserService;
 
     constructor() {
         // const adminRepository = new AdminRepository();
 
         this.adminLoginUseCase = new AdminLoginUseCase();
+        this.userService = new UserService();
     }
 
     public async login(req: Request, res: Response): Promise<void> {
@@ -33,11 +36,31 @@ export class AdminController {
 
                 res.status(200).json({success: true, message: 'Login successful' ,tokens});
             } else {
-                res.status(401).json({success: false, error: 'Invalid credentials' });
+                res.status(401).json({success: false, error: 'Invalid email or password' });
             }
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: 'Internal server error' });
         }
     }
+
+    public async getAllUsers(req: Request, res: Response): Promise<void> {
+        try {
+            const users = await this.userService.getAllUsers();
+
+            console.log(users,"++++++++++++++")
+
+            if (users.length > 0) {
+                res.status(200).json({ success: true, users });
+            } else {
+                res.status(404).json({ success: false, message: 'No users found' });
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ success: false, message: 'Internal server error' });
+        }
+    }
+
+
+
 }

@@ -9,6 +9,8 @@ import { VerifyOtpUseCaseImpl } from "../../usecases/index";
 import { GoogleSignUpUseCase } from "../../usecases/index";
 import { ContractorSignupUseCase } from "../../usecases/contractor";
 import { ContractorLoginUseCase } from "../../usecases/contractor";
+import Getcontractorusecase from "../../usecases/contractor/getContractorusecase";
+
 
 import { SendOtp } from "../../usecases/index";
 import { UserRepository,MongoOtpRepository,ContractorRepository } from "../../repositories";
@@ -21,8 +23,6 @@ const userRepository = new UserRepository();
 const contractorRepository = new ContractorRepository();
 const otpService = new OtpService(emailService); 
 const otpRepository = new MongoOtpRepository(); 
-
-
 
 
 
@@ -54,15 +54,16 @@ const contractorLoginUseCase = new ContractorLoginUseCase(
 );
 
 
-const adminLoginUseCase = new AdminLoginUseCase(
+// const adminLoginUseCase = new AdminLoginUseCase(
+// );
+
+const getcontractorusecase = new Getcontractorusecase(
+    
 );
 
 
-
-
-
 const userController = new UserController(signupUseCase,loginUseCase,sendOtpUseCase,VerifyOtpUseCase,googleSignUpUseCase);
-const contractorController = new ContractorController(contractorSignupUseCase,contractorLoginUseCase);
+const contractorController = new ContractorController(contractorSignupUseCase,contractorLoginUseCase,getcontractorusecase);
 const adminController = new AdminController();
 
 
@@ -104,14 +105,5 @@ router.post("/admin/login", (req, res, next) => {
     adminController.login(req, res);
 
 });
-
-
-
-
-
-
-
-
-
 
 export default router;

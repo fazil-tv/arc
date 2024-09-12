@@ -13,8 +13,10 @@ export const adminApi = createApi({
         body: credentials,
       }),
     }),
+    getAllUsers: builder.query({
+      query: () => '/adminapi/admin/users',
+    }),
   }),
 });
 
-
-export const { useAdminloginMutation } = adminApi;
+export const { useAdminloginMutation,useGetAllUsersQuery } = adminApi;

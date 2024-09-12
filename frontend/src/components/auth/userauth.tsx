@@ -38,19 +38,19 @@ const LoginSchema = z.object({
 });
 
 const SignUpSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-  email: z.string().email({ message: "Invalid email address" }),
-  password: z.string().min(6, {
-    message: "Password must be at least 6 characters.",
-  }),
-  confirmPassword: z.string().min(6, {
-    message: "Confirm Password must be at least 6 characters.",
-  }),
+    username: z.string().min(2, {
+        message: "Username must be at least 2 characters.",
+    }),
+    email: z.string().email({ message: "Invalid email address" }),
+    password: z.string().min(6, {
+        message: "Password must be at least 6 characters.",
+    }),
+    confirmPassword: z.string().min(6, {
+        message: "Confirm Password must be at least 6 characters.",
+    }),
 }).refine((data) => data.password === data.confirmPassword, {
-  message: "Passwords do not match",
-  path: ["confirmPassword"],
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
 });
 
 
@@ -74,7 +74,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, value, onChange,
     const [isLogin, setIsLogin] = useState(true);
     const [showOtp, setShowOtp] = useState(false);
 
-    
+
 
     const form = useForm({
         resolver: zodResolver(isLogin ? LoginSchema : SignUpSchema),
@@ -149,7 +149,8 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, value, onChange,
 
                 if (loginresponse.data.success) {
                     onClose();
-                    router.push('/');
+                    // router.push('/');
+                    window.location.href = '/';
                 } else {
                     console.error(loginresponse.data.message);
                 }
@@ -204,12 +205,13 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, value, onChange,
 
 
 
-            if (Verifyotpresponse.data.success) {
+            if (Verifyotpresponse.data.success){
                 setShowOtp(false);
                 onClose();
-                router.push('/');
+                // router.push('/');
+                window.location.href = '/';
             } else {
-                console.log(Verifyotpresponse.data.message)
+                console.log(Verifyotpresponse.data.message);
             }
         } catch (error) {
             console.log(error);
@@ -230,11 +232,12 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, value, onChange,
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
+        <div className="fixed  inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-60">
             <div
-                className="relative bg-cover bg-center rounded-lg shadow-lg w-1/3 h-[550px] p-8 flex flex-col justify-center"
+            className={`relative bg-cover bg-center rounded-lg shadow-lg w-1/3 p-8 flex flex-col justify-center ${isLogin ? 'h-[550px]' : 'h-[650px]'}`}
+
                 style={{
-                    backgroundImage: "url('/images/signupimg.jpg')",
+                    backgroundImage: "url('/images/authbackground.png')",
                     backgroundSize: "cover",
                 }}
             >
@@ -257,7 +260,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, value, onChange,
                         />
                     </svg>
                 </button>
-                <h2 className="text-2xl font-bold mb-4 text-center text-white">
+                <h2 className="text-2xl font-bold mb-4 text-center text-black">
                     {showOtp ? "Verify OTP" : isLogin ? "Login" : "Sign Up"}
                 </h2>
                 {!showOtp ? (
@@ -288,10 +291,11 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, value, onChange,
                             <FormField
                                 control={form.control}
                                 name="email"
+
                                 render={({ field }) => (
-                                    <FormItem>
+                                    <FormItem className="border-none" >
                                         <FormLabel>Email</FormLabel>
-                                        <FormControl>
+                                        <FormControl >
                                             <Input
                                                 type="email"
                                                 placeholder="Enter your email"
@@ -299,6 +303,10 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, value, onChange,
                                                 value={formData.email}
                                                 {...register("email")}
                                                 onChange={handleChange}
+
+                                                className="border-none focus:outline-none focus:ring-0"
+
+
                                             />
                                         </FormControl>
                                         <FormMessage />
@@ -320,6 +328,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, value, onChange,
                                                 value={formData.password}
                                                 {...register("password")}
                                                 onChange={handleChange}
+                                                className="pb-5"
 
                                             />
                                         </FormControl>
@@ -330,30 +339,36 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, value, onChange,
 
                             {!isLogin && (
                                 <FormField
-                                control={form.control}
-                                name="confirmPassword"
-                                render={({ field }) => (
-                                  <FormItem>
-                                    <FormLabel>Confirm Password</FormLabel>
-                                    <FormControl>
-                                      <Input
-                                        type="password"
-                                        placeholder="Confirm your confirmPassword"
-                                        {...field}
-                                        value={formData.confirmPassword}
-                                        {...register("confirmPassword")}
-                                        onChange={handleChange}
-                                      />
-                                    </FormControl>
-                                    {errors.confirmPassword && <FormMessage>{errors.confirmPassword.message}</FormMessage>}
-                                  </FormItem>
-                                )}
-                              />
+                                    control={form.control}
+                                    name="confirmPassword"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Confirm Password</FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    type="password"
+                                                    placeholder="Confirm your confirmPassword"
+                                                    {...field}
+                                                    value={formData.confirmPassword}
+                                                    {...register("confirmPassword")}
+                                                    onChange={handleChange}
+                                                />
+                                            </FormControl>
+                                            {errors.confirmPassword && <FormMessage>{errors.confirmPassword.message}</FormMessage>}
+                                        </FormItem>
+                                    )}
+                                />
                             )}
 
-                            <Button type="submit" className="pt-5 mt-52">
-                                {isLogin ? "Login" : "Sign Up"}
-                            </Button>
+                            <div className="mt-5">
+                            <Button type="submit" className="pt-5 pb-5">
+                                    {isLogin ? "Login" : "Sign Up"}
+                                </Button>
+                            </div>
+                           
+                         
+                  
+
                         </form>
                         <GoogleSignInButton onClose={onClose} />
                     </Form>
@@ -379,13 +394,13 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, value, onChange,
                     </div>
                 )}
                 {!showOtp && (
-                    <p className="mt-4 text-center text-white">
+                    <p className="mt-4 text-center text-black">
                         {isLogin
                             ? "Don't have an account? "
                             : "Already have an account? "}
                         <button
                             onClick={() => setIsLogin(!isLogin)}
-                            className="text-blue-200 hover:text-blue-300"
+                            className="text-blue-200 hover:text-blue-300 "
                         >
                             {isLogin ? "Sign Up" : "Login"}
                         </button>

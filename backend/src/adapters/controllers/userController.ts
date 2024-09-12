@@ -72,13 +72,13 @@ export class UserController {
             if (user) {
 
                 res.cookie('token', user.token, {
-                    httpOnly: true,
+                  
                     secure: process.env.NODE_ENV === 'production',
                     maxAge: 24 * 60 * 60 * 1000,
                 });
 
                 res.cookie('refreshToken', user.refreshtoken, {
-                    httpOnly: true,
+                  
                     secure: process.env.NODE_ENV === 'production',
                     maxAge: 7 * 24 * 60 * 60 * 1000,
                 });
@@ -116,13 +116,13 @@ export class UserController {
             
             if (isValid) {
                 res.cookie('token', isValid.token, {
-                    httpOnly: true,
+                
                     secure: process.env.NODE_ENV === 'production',
                     maxAge: 24 * 60 * 60 * 1000,
                 });
 
                 res.cookie('refreshToken', isValid.refreshToken, {
-                    httpOnly: true,
+                 
                     secure: process.env.NODE_ENV === 'production',
                     maxAge: 7 * 24 * 60 * 60 * 1000,
                 });
@@ -164,13 +164,13 @@ export class UserController {
                     console.log("goggle user", googleUser.token);
 
                     res.cookie('token', googleUser.token, {
-                        httpOnly: true,
+               
                         secure: process.env.NODE_ENV === 'production',
                         maxAge: 24 * 60 * 60 * 1000,
                     });
 
                     res.cookie('refreshToken', googleUser.refreshtoken, {
-                        httpOnly: true,
+                      
                         secure: process.env.NODE_ENV === 'production',
                         maxAge: 7 * 24 * 60 * 60 * 1000,
                     });

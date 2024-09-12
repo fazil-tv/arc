@@ -11,11 +11,11 @@ export const contractorApi = createApi({
       query: (credentials) => {
         console.log("Query function called with contractor:", credentials);
         return {
-            url: '/api/contractor/register',
-            method: 'POST',
-            body: credentials,
+          url: '/api/contractor/register',
+          method: 'POST',
+          body: credentials,
         };
-    },
+      },
     }),
     login: builder.mutation({
       query: (credentials) => ({
@@ -24,7 +24,10 @@ export const contractorApi = createApi({
         body: credentials,
       }),
     }),
+    getAllcontractor: builder.query({
+      query: () => '/contractorapi/contractor/getcontractor',
+    }),
   }),
 });
 
-export const { useSignupMutation, useLoginMutation } = contractorApi;
+export const { useSignupMutation, useLoginMutation, useGetAllcontractorQuery } = contractorApi;

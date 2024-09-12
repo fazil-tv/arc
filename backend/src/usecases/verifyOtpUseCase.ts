@@ -16,8 +16,7 @@ export class VerifyOtpUseCaseImpl implements VerifyOtpinterface {
 
             const user = await this.userRepository.getCurrentUser(email);
 
-            console.log(user, "user");
-            console.log(user?._id, "user id");
+     
 
 
             if (!user || !user.otp) {
@@ -35,9 +34,9 @@ export class VerifyOtpUseCaseImpl implements VerifyOtpinterface {
                 await this.userRepository.updateUserOtpVerified(user._id, true);
 
                 const token = generateToken((user._id as string).toString())
-                console.log(token, "token")
+             
                 const refreshToken = generateRefreshToken((user._id as string).toString())
-                console.log(refreshToken, "refreshtoken")
+
 
                 return {
                     refreshToken,

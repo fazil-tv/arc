@@ -9,10 +9,12 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+
 // export const metadata: Metadata = {
 //   title: "Admin Dashboard",
 //   description: "Admin module of the application",
 // };
+
 
 export default function AdminLayout({
   children,
@@ -28,7 +30,7 @@ export default function AdminLayout({
             {children}
           </Provider>
         </main>
-        <script src="https://unpkg.com/flowbite@1.4.4/dist/flowbite.js"></script>
+        <script src="https://unpkg.com/flowbite@1.4.4/dist/flowbite.js" />
         {/* <AdminFooter /> */}
       </body>
     </html>

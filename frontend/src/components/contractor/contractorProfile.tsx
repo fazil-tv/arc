@@ -2,10 +2,9 @@ import React from 'react'
 
 function contractorProfile() {
   return (
-    
 
 <div className="w-full max-w-sm  border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-    <div className="flex justify-end px-4 pt-4">
+    <div className="flex justify-end px-4">
         {/* <button id="dropdownButton" data-dropdown-toggle="dropdown" className="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
             <span className="sr-only">Open dropdown</span>
             <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
@@ -27,6 +26,7 @@ function contractorProfile() {
             </ul>
         </div>
     </div>
+    
     <div className="flex flex-col items-center pb-10">
         <img className="w-24 h-24 mb-3 rounded-full shadow-lg bg-white" src="/images/userimg.jpg" alt="Bonnie image"/>
         <h5 className="mb-1 text-xl font-medium  text-white">Bonnie Green</h5>
@@ -35,6 +35,7 @@ function contractorProfile() {
             <a href="#" className="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Edit</a>
         </div>
     </div>
+
 </div>
 
   )
