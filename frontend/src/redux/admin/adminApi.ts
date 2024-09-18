@@ -8,7 +8,7 @@ export const adminApi = createApi({
   endpoints: (builder) => ({
     adminlogin: builder.mutation({
       query: (credentials) => ({
-        url: '/api/admin/login',
+        url: '/adminapi/admin/login',
         method: 'POST',
         body: credentials,
       }),
@@ -16,7 +16,17 @@ export const adminApi = createApi({
     getAllUsers: builder.query({
       query: () => '/adminapi/admin/users',
     }),
+    addService: builder.mutation({
+      query: (credentials) => {
+        console.log('Credentials:', credentials);
+        return {
+          url: '/adminapi/admin/addservice',
+          method: 'POST',
+          body: credentials,
+        };
+      },
+    }),
   }),
 });
 
-export const { useAdminloginMutation,useGetAllUsersQuery } = adminApi;
+export const { useAdminloginMutation,useGetAllUsersQuery ,useAddServiceMutation  } = adminApi;

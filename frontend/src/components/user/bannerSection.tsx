@@ -21,6 +21,7 @@ function BannerSection() {
 
     return (
         <>
+        
             <div className="content-wrapper">
                 <div className="content">
                     <div className="banner-section">

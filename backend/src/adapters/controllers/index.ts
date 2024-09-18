@@ -1,3 +1,4 @@
-export * from './userController'
-export * from './contractorController'
-export * from './adminController'
+export * from './user/userController'
+export * from './contractor/contractorController'
+export * from './admin/adminController'
+export * from './admin/ServiceController'

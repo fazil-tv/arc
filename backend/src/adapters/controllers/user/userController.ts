@@ -6,10 +6,10 @@ import {
     SendOtp,
     VerifyOtpUseCaseImpl,
     GoogleSignUpUseCase
-} from "../../usecases/index"
+} from "../../../usecases/index"
 
-import { googleAuthService } from "../../services";
-import { UserRepository } from "../../repositories";
+import { googleAuthService } from "../../../services";
+import { UserRepository } from "../../../repositories";
 
 
 export class UserController {

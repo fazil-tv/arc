@@ -7,7 +7,7 @@ const AdminLayout = dynamic(() => import('../../components/admin/adminLayout'));
 function page() {
     return (
         <>
-           <AdminLayout />
+            <AdminLayout />
         </>
     )
 }

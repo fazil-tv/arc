@@ -29,9 +29,7 @@ interface AdminSideNavProps {
                     <a className="flex logo items-center space-x-3 rtl:space-x-reverse justify-center pt-10 ">
                         <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">F-arc</span>
                     </a>
-
                     <ContractorProfile />
-
                     <ul className="space-y-2 font-medium pt-2">
                         <li className='bg-[#7B57DF] rounded-lg'>
                             <a onClick={()=> onSelect('dashboard')} className="flex items-center p-5 text-white rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -97,7 +95,7 @@ interface AdminSideNavProps {
 
                     <ul className="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700 ">
                         <li className='bg-[#7B57DF] rounded-lg'>
-                            <a href="#" className="flex items-center p-5 text-white rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <a onClick={()=> onSelect('services')} className="flex items-center p-5 text-white rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                 <svg className="flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-400 group-hover:text-custom-purple dark:group-hover:text-custom-purple" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
                                     <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
                                 </svg>

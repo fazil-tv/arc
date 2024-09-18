@@ -1,8 +1,8 @@
 
 
 import { NextFunction, Request, Response } from "express";
-import { ContractorSignupUseCase,ContractorLoginUseCase } from "../../usecases/contractor";
-import Getcontractorusecase from "../../usecases/contractor/getContractorusecase";
+import { ContractorSignupUseCase,ContractorLoginUseCase } from "../../../usecases/contractor";
+import Getcontractorusecase from "../../../usecases/contractor/getContractorusecase";
 
 export class ContractorController {
 
@@ -67,9 +67,6 @@ export class ContractorController {
 
             const user = await this.contractorLoginUseCase.execute(email, password);
 
-
-            
-
             if (user) {
 
                 res.cookie('token', user.token, {
@@ -102,8 +99,6 @@ export class ContractorController {
         try {
             const users = await this.getcontractorusecase.getAllcontractors();
 
-            console.log(users,"contractorrrrrrrrr")
-
             if (users.length > 0) {
                 res.status(200).json({ success: true, users });
             } else {
@@ -118,6 +113,7 @@ export class ContractorController {
 
     
 
+     
 
 
 

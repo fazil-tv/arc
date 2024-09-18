@@ -1,15 +1,14 @@
 import { Request, Response } from 'express';
-import { AdminLoginUseCase } from '../../usecases';
-import { AdminRepository } from '../../repositories/implementation/adminRepository';
-import UserService from '../../usecases/admin/getuserUsecase';
+import { AdminLoginUseCase } from '../../../usecases';
+import { AdminRepository } from '../../../repositories/implementation/adminRepository';
+import UserService from '../../../usecases/admin/getuserUsecase';
 
 export class AdminController {
     private adminLoginUseCase: AdminLoginUseCase;
     private userService: UserService;
 
     constructor() {
-        // const adminRepository = new AdminRepository();
-
+   
         this.adminLoginUseCase = new AdminLoginUseCase();
         this.userService = new UserService();
     }
@@ -48,8 +47,6 @@ export class AdminController {
         try {
             const users = await this.userService.getAllUsers();
 
-            console.log(users,"++++++++++++++")
-
             if (users.length > 0) {
                 res.status(200).json({ success: true, users });
             } else {
@@ -60,7 +57,5 @@ export class AdminController {
             res.status(500).json({ success: false, message: 'Internal server error' });
         }
     }
-
-
 
 }

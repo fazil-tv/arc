@@ -20,14 +20,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+          <body className={`${inter.className} user-layout`}>
         <GoogleOAuthProvider clientId="1009282809407-sh8h2kgmot2q295a503sl5530pldnaj9.apps.googleusercontent.com">
           <Provider store={store}>
             {children}
           </Provider>
           <script src="https://unpkg.com/flowbite@1.4.4/dist/flowbite.js" />
         </GoogleOAuthProvider>
-
       </body>
     </html>
   );

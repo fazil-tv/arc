@@ -3,14 +3,8 @@ import AuthModal from '@/components/auth/userauth';
 import React, { useEffect, useState } from 'react';
 import { RootState } from '@/redux/store';
 import { useSelector } from 'react-redux';
-import { useRouter } from 'next/navigation';
 import LogoutAlert from '../logoutalert';
 
-
-// interface HeaderProps {
-//     isLoggedIn: boolean;
-//     onLogout: () => void;
-// }
 
 const UserNavbar: React.FC = () => {
     const { refreshToken, Token } = useSelector((state: RootState) => state.user);
@@ -44,15 +38,13 @@ const UserNavbar: React.FC = () => {
         setModalIndex(index);
     };
 
-    const router = useRouter();
-
         const handleLogout = () => {           
             document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
             document.cookie = 'refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 
             localStorage.removeItem('Token');
             localStorage.removeItem('refreshToken');
-            // router.push('/');
+         
             window.location.href = '/';
 
           };
@@ -108,7 +100,8 @@ const UserNavbar: React.FC = () => {
                                 <a href="/" className="block py-2 px-3  text-gray-900 " aria-current="page">Home</a>
                             </li>
                             <li>
-                                <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+                                <a href="
+                                #" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
                             </li>
                             <li>
                                 <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>

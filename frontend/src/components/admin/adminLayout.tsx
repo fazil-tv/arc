@@ -4,12 +4,13 @@ import { useState } from 'react';
 import Dashboard from './Dashboard';
 import dynamic from 'next/dynamic';
 import UserDetiles from './User';
+import Services from './services';
 
 
 const AdminSideNav = dynamic(() => import('@/components/admin/adminnavbar/adminsidenavbar'));
 
 import ContractorDetails from './contractor';
-// import Settings from '@/components/admin/Settings';
+
 
 const AdminLayout = () => {
     const [selectedSection, setSelectedSection] = useState('dashboard');
@@ -23,6 +24,8 @@ const AdminLayout = () => {
                 return <UserDetiles />;
               case 'contractor':
                 return <ContractorDetails />;
+                case 'services':
+                    return <Services />;
             default:
                 return <Dashboard />;
         }
@@ -37,6 +40,7 @@ const AdminLayout = () => {
                     {renderSection()}
                 </div>
             </div>
+            
         </>
 
     );

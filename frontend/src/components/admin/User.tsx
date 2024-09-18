@@ -5,7 +5,7 @@ import { useGetAllUsersQuery } from '@/redux/admin/adminApi';
 function UserDetails() {
     const { data: users, error, isLoading } = useGetAllUsersQuery(undefined);
 
-    console.log(users, "ppppppppPPPPPPPPPPPPPP")
+    console.log(users);
 
     const getLastFourDigits = (userId:string) => {
         return userId.slice(-4);

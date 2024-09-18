@@ -6,8 +6,6 @@ import { useGetAllcontractorQuery } from '@/redux/contractor/contractorApi';
 function ContractorDetails() {
     const { data: users, error, isLoading } = useGetAllcontractorQuery(null);
 
-    console.log(users, "ppppppppPPPPPPPPPPPPPP");
-
     const getLastFourDigits = (userId: string) => {
         return userId.slice(-4);
     };
@@ -18,12 +16,6 @@ function ContractorDetails() {
 
     }
 
-    //   if (error) {
-    //     return <p>Error loading users: {error}</p>;
-    //   }
-
-
-
     return (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             {users?.users?.length > 0 ? (
@@ -31,13 +23,13 @@ function ContractorDetails() {
                     <div className="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4  dark:bg-gray-900">
 
                         <div>
-                            <button id="dropdownActionButton" data-dropdown-toggle="dropdownAction" className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                            {/* <button id="dropdownActionButton" data-dropdown-toggle="dropdownAction" className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
                                 <span className="sr-only">Action button</span>
                                 Action
                                 <svg className="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
                                 </svg>
-                            </button>
+                            </button> */}
 
                             <div id="dropdownAction" className="z-10 hidden  divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                                 <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownActionButton">
@@ -89,7 +81,7 @@ function ContractorDetails() {
                                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                     <td className="px-6 py-4">
                                         <div className="flex items-center">
-                                            <td className="px-6 py-4">USER-{getLastFourDigits(user._id)}</td>
+                                            <td className="px-6 py-4">CON-{getLastFourDigits(user._id)}</td>
                                         </div>
                                     </td>
                                     <th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
