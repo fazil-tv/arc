@@ -13,9 +13,12 @@ export const adminApi = createApi({
         body: credentials,
       }),
     }),
+
+
     getAllUsers: builder.query({
       query: () => '/adminapi/admin/users',
     }),
+
     addService: builder.mutation({
       query: (credentials) => {
         console.log('Credentials:', credentials);
@@ -26,7 +29,32 @@ export const adminApi = createApi({
         };
       },
     }),
+
+    getAllServices: builder.query({
+      query: () => '/adminapi/admin/services',
+    }),
+
+    editService: builder.mutation({
+      query: ({ id, service }) => {
+        console.log('Updating Service ID:', id, 'with Data:', service);
+        return {
+          url: `/adminapi/admin/editservices/${id}`, 
+          method: 'PUT',
+          body: service,
+        };
+      }
+    }),
+    
+    deleteService: builder.mutation({
+      query: ({id}) => {
+        console.log('Deleting Service with ID:', id);
+        return {
+          url: `/adminapi/admin/deleteservices/${id}`,
+          method: 'DELETE',
+        };
+      }
+    }),
   }),
 });
 
-export const { useAdminloginMutation,useGetAllUsersQuery ,useAddServiceMutation  } = adminApi;
+export const { useAdminloginMutation, useGetAllUsersQuery, useAddServiceMutation, useGetAllServicesQuery, useEditServiceMutation,  useDeleteServiceMutation } = adminApi;

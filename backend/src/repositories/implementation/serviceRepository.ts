@@ -11,4 +11,14 @@ export class ServiceRepositoryImpl implements ServiceRepository {
   async getAllServices(): Promise<Service[]> {
     return ServiceModel.find().exec();
   }
+
+  async editService(id: string, updatedService: Partial<Service>): Promise<Service | null> {
+    return ServiceModel.findByIdAndUpdate(id, updatedService, { new: true }).exec();
+  }
+
+
+  async deleteService(id: string): Promise<boolean | null> {
+    const result = await ServiceModel.findByIdAndDelete(id).exec();
+  return result ? true : null; 
+  }
 }

@@ -18,8 +18,21 @@ router.post("/admin/addservice",upload,(req, res) => {
    
     serviceController.addService(req, res);
 
-
 });
+router.get("/admin/services",(req, res) => {
+   serviceController.getAllServices(req, res);
+});
+
+router.put("/admin/editservices/:id", (req, res) => {
+    serviceController.editService(req, res);
+ });
+ 
+ 
+router.delete("/admin/deleteservices/:id", (req, res) => {
+   console.log("hmmmmmmmm")
+   serviceController.deleteService(req, res);
+ });
+ 
 
 
 export default router;

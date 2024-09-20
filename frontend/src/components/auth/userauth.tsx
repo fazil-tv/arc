@@ -150,6 +150,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, value, onChange,
                 if (loginresponse.data.success) {
                     onClose();
                     // router.push('/');
+                    
                     window.location.href = '/';
                 } else {
                     console.error(loginresponse.data.message);

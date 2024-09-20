@@ -17,11 +17,6 @@ function UserDetails() {
 
     }
 
-    //   if (error) {
-    //     return <p>Error loading users: {error}</p>;
-    //   }
-
-
 
     return (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

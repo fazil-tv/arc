@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { AdminLoginUseCase } from '../../../usecases';
-import { AdminRepository } from '../../../repositories/implementation/adminRepository';
 import UserService from '../../../usecases/admin/getuserUsecase';
 
 export class AdminController {
@@ -20,7 +19,7 @@ export class AdminController {
             console.log(email,"email","password",password)
             const tokens = this.adminLoginUseCase.login(email, password);
 
-            console.log(tokens,"token")
+            console.log(tokens,"token");
 
             if (tokens) {
                 res.cookie('access_admin_token', tokens.accessToken, {

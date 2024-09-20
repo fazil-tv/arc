@@ -9,12 +9,9 @@ import LogoutAlert from '../logoutalert';
 const UserNavbar: React.FC = () => {
     const { refreshToken, Token } = useSelector((state: RootState) => state.user);
   
-    console.log(Token, "accessToken");
-    console.log(refreshToken, "refreshTokens");
-  
+
     const [isLoggedIn, setIsLoggedIn] = useState(false);
   
-
     useEffect(() => {
         
       if (refreshToken && Token) {
@@ -46,6 +43,7 @@ const UserNavbar: React.FC = () => {
             localStorage.removeItem('refreshToken');
          
             window.location.href = '/';
+
 
           };
 
