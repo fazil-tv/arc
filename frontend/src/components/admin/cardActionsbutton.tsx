@@ -63,8 +63,6 @@ export function CardActions(data:any) {
           Edite Service
         </DropdownMenuItem>
        
-
-
         <DropdownMenuItem onClick={handleDeleteClick}>
           Delete Service
         </DropdownMenuItem>

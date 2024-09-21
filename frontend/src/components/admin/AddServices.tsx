@@ -40,14 +40,23 @@ export function AddServicesForm() {
   const { refetch} = useGetAllServicesQuery({});
   const [backendError, setBackendError] = useState(null);
 
+
+  const MAX_FILES = 4;
+
+
   const handleFileChange = (e: any) => {
     const files = e.target.files;
-    if (files) {
-      setFormData(prevData => ({
-        ...prevData,
-        images: Array.from(files)
-      }));
+
+    if (files.length + formData.images.length > MAX_FILES) {
+      alert(`You can only upload a maximum of ${MAX_FILES} files.`);
+      return;
     }
+
+    setFormData(prevData => ({
+      ...prevData,
+      images: Array.from(files)
+    }));
+  
   };
 
 

@@ -23,13 +23,12 @@ router.get("/admin/services",(req, res) => {
    serviceController.getAllServices(req, res);
 });
 
-router.put("/admin/editservices/:id", (req, res) => {
+router.put("/admin/editservices/:id",upload, (req, res) => {
     serviceController.editService(req, res);
- });
+});
  
  
 router.delete("/admin/deleteservices/:id", (req, res) => {
-   console.log("hmmmmmmmm")
    serviceController.deleteService(req, res);
  });
  
