@@ -1,5 +1,5 @@
-.banner-section{
-    
+body{
+  background-color: #f0f0f0;
 }
 .banner-head{
     font-size: 40px;
@@ -19,8 +19,6 @@
     position: relative;
     bottom: 30px;
 }
-
-
 
 .modal {
     position: fixed;
@@ -45,4 +43,10 @@
     margin-top: 10px;
     display: block;
     width: 100%;
+  }
+
+  .banner-section {
+    height: auto;
+    width: 100%;
+    overflow: hidden;
   }

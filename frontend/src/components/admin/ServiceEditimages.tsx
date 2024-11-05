@@ -18,14 +18,15 @@ export default function servicesEditimages({ imagedata, onDeleteImage, onUploadI
 
 
     const [selectedImageUrl, setSelectedImageUrl] = useState<string | null>(null);
+    // const [images, setImages] = useState<string[]>(imagedata.images);
+    const [images, setImages] = useState([]);
 
-    console.log(selectedImageUrl, "selectedImageUrlselectedImageUrl")
 
-    const [images, setImages] = useState<string[]>(imagedata.images);
 
-    useEffect(() => {
-        setImages(imagedata.images);
-    }, [imagedata]);
+    // useEffect(() => {
+    //     setImages(imagedata.images);
+    // }, [imagedata]);
+
 
     const handleDeleteImage = (imageUrl: string) => {
         onDeleteImage(imageUrl);
@@ -36,22 +37,25 @@ export default function servicesEditimages({ imagedata, onDeleteImage, onUploadI
         if (!files) return;
 
         const currentImageCount = imagedata.images.length
-        console.log(currentImageCount+images.length, "currentImageCount");
-        console.log(images.length, "222##");
-
-
+       
         const fileArray = Array.from(files);
-
-        console.log(fileArray,"fileArray")
-
-        onUploadImage(fileArray);
 
         const newImageUrls = fileArray.map(file => URL.createObjectURL(file));
 
         setImages(prevImages => [...prevImages, ...newImageUrls]);
+        
+        onUploadImage(fileArray);
 
+        // const file = e.target.files
+        // if (file) {
+        //   const reader = new FileReader();
+        //   reader.onloadend = () => {
+        //     setImages([...images, reader.result]);
+        //   };
+        //   reader.readAsDataURL(file);
+        // }
 
-
+    
     };
 
 
@@ -84,15 +88,14 @@ export default function servicesEditimages({ imagedata, onDeleteImage, onUploadI
                     </Card>
                 ))}
 
-
-                {imagedata.images.length + images.length <= 4 && (
-                    <div className="flex flex-col items-center justify-center h-32 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+                {imagedata.images.length + images.length <= 6&& (
+                    <div className="flex flex-col items-center justify-center h-32 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 cursor-pointer">
 
                         <label
                             htmlFor="file-upload"
-                            className="flex items-center justify-center px-4 py-2 bg-gray-200 text-gray-800 rounded cursor-pointer hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
+                            className="flex items-center justify-center px-4 py-2  cursor-pointer"
                         >
-                            <Plus className="h-7 w-7 rounded mr-2" />
+                            <Plus className="h-7 w-7 rounded mr-2 cursor-pointer" />
                             Select and Upload Image
                         </label>
                         <input
@@ -103,26 +106,10 @@ export default function servicesEditimages({ imagedata, onDeleteImage, onUploadI
                         />
                     </div>
                 )}
-
-
-
-
             </div>
-            {/* 
+           
             <Dialog open={!!selectedImageUrl} onOpenChange={() => setSelectedImageUrl(null)}>
                 <DialogContent>
-                    <img
-                        src={selectedImageUrl ? `/uplodedImages/${selectedImageUrl}` : ''}
-                        alt="Selected Design"
-                        className="w-full h-auto object-cover rounded-md"
-                    />
-                </DialogContent>
-            </Dialog>
-             */}
-
-            <Dialog open={!!selectedImageUrl} onOpenChange={() => setSelectedImageUrl(null)}>
-                <DialogContent>
-
                     <img
                         src={selectedImageUrl ? (selectedImageUrl.startsWith('blob:') ? selectedImageUrl : `/uplodedImages/${selectedImageUrl}`) : ''}
                         alt="Selected Design"

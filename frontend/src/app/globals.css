@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'https://unpkg.com/flowbite@1.4.4/dist/flowbite.css';
 
 @layer base {
   :root {

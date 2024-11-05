@@ -1,9 +1,9 @@
 import express from "express";
 import cors from "cors";
-import http from "http";
 import dotenv from "dotenv";
 import authRout from './infrastructure/express/authroutes'
-import adminrout from './infrastructure/express/adminrouts'
+import adminRout from './infrastructure/express/adminrouts'
+import userRout from './infrastructure/express/userRouts'
 import contractorRout from './infrastructure/express/contractorouts'
 import cookieParser from 'cookie-parser';
 import { connectDB } from "./infrastructure/db";
@@ -28,13 +28,9 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use("/api", authRout);
-app.use("/adminapi", adminrout);
+app.use("/userapi", userRout);
 app.use("/contractorapi", contractorRout);
-  
-
-// app.get('/', (req, res) => {
-//   res.send('Hello, Express with TypeScript!');
-// });
+app.use("/adminapi", adminRout);
 
 app.listen(PORT, async() => {
   await connectDB()

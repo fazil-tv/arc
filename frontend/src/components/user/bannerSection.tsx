@@ -1,28 +1,28 @@
 "use client"
+
 import React, { useState } from 'react'
 import AuthModal from '../auth/userauth';
 
 function BannerSection() {
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    
+    const openModal = () => {
 
+        setIsModalOpen(true);
 
+    };
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
+    const closeModal = () => {
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+        setIsModalOpen(false);
+
+    };
 
 
     return (
         <>
-        
-            <div className="content-wrapper">
+            <div className="content-wrapper overflow-hidden">
                 <div className="content">
                     <div className="banner-section">
                         <h1 className="banner-head">Quality construction begins with a quality relationship</h1>
@@ -36,7 +36,7 @@ function BannerSection() {
                 <div className="fixed-image-container w-full h-screen">
                     <img src="/images/mainbannerhd.png" alt="banner" className="fixed-image w-full h-full object-cover" />
                 </div>
-                <div className="flex items-center justify-center min-h-screen bg-gray-100">
+                <div className="flex items-center justify-center">
                     <AuthModal isOpen={isModalOpen} onClose={closeModal} value={''} index={0} onChange={function (e: React.ChangeEvent<HTMLInputElement>, index: number): void {
                         throw new Error('Function not implemented.');
                     }} />

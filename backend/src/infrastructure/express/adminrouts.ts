@@ -10,7 +10,6 @@ const adminController = new AdminController();
 const serviceController = new ServiceController();
 
 router.get("/admin/users", (req, res) => {
-    
     adminController.getAllUsers(req, res);
 });
 
@@ -31,6 +30,8 @@ router.put("/admin/editservices/:id",upload, (req, res) => {
 router.delete("/admin/deleteservices/:id", (req, res) => {
    serviceController.deleteService(req, res);
  });
+ 
+
  
 
 

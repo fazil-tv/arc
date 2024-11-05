@@ -31,6 +31,22 @@ export class UserRepository implements IUserRepository {
     }
   }
 
+  async findById(userId: string): Promise<IUserData | null> {
+    try {
+      
+        const user = await userModel.findById(userId).exec();
+
+        // if (!user) return null; 
+
+        return user; 
+
+    } catch (error) {
+      console.error("Error finding user by ID:", error);
+        return null;
+    }
+}
+
+
 
   async save(user: User): Promise<User> {
     try {
@@ -48,7 +64,9 @@ export class UserRepository implements IUserRepository {
     try {
 
       const user = await userModel.findOne({ email }).exec();
-      return user ? user : null;
+      if (!user) return null; 
+
+      return user; 
 
     } catch (error) {
       console.error('Error retrieving current user:', error);

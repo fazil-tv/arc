@@ -1,7 +1,7 @@
-import { ServiceRepository } from "../../repositories/interface/serviceinterface";
+import { IServiceRepository } from "../../repositories/interface/serviceinterface";
 
 export class DeleteServiceUseCase {
-  constructor(private serviceRepository: ServiceRepository) {}
+  constructor(private serviceRepository: IServiceRepository) {}
 
   async execute(id: string):Promise<boolean | null> {
     const result =  await this.serviceRepository.deleteService(id);

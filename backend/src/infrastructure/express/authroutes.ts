@@ -3,16 +3,16 @@ const router = Router();
 import {UserController} from '../../adapters/controllers'
 import { ContractorController } from "../../adapters/controllers";
 import { AdminController } from "../../adapters/controllers";
-import { AdminLoginUseCase, SignupUseCase } from "../../usecases/index";
-import { LoginUseCase } from "../../usecases/index";
-import { VerifyOtpUseCaseImpl } from "../../usecases/index";
-import { GoogleSignUpUseCase } from "../../usecases/index";
+import { SignupUseCase } from "../../usecases/user";
+import { LoginUseCase } from "../../usecases/user";
+import { VerifyOtpUseCaseImpl } from "../../usecases/user";
+import { GoogleSignUpUseCase } from "../../usecases/user";
 import { ContractorSignupUseCase } from "../../usecases/contractor";
 import { ContractorLoginUseCase } from "../../usecases/contractor";
 import Getcontractorusecase from "../../usecases/contractor/getContractorusecase";
 
 
-import { SendOtp } from "../../usecases/index";
+import { SendOtp } from "../../usecases/user";
 import { UserRepository,MongoOtpRepository,ContractorRepository } from "../../repositories";
 import { OtpService } from "../../services";
 import { NodemailerEmailService } from "../../services";
@@ -53,9 +53,6 @@ const contractorLoginUseCase = new ContractorLoginUseCase(
     contractorRepository
 );
 
-
-// const adminLoginUseCase = new AdminLoginUseCase(
-// );
 
 const getcontractorusecase = new Getcontractorusecase(
     
@@ -101,7 +98,10 @@ router.post("/contractor/login", (req, res, next) => {
 });
 
 router.post("/admin/login", (req, res, next) => {
+    console.log("PPPPPPPPPPP{{{{{{{{{{{}}}}}}}}}}}");
+    
     console.log("admin login route hit");
+
     adminController.login(req, res);
 
 });
